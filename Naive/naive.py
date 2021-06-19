@@ -1,16 +1,20 @@
-def naive(st, text):
-    ls = len(st)
-    lps = len(text)
-    n = 0
-    for i in range(ls - lps + 1):
-        n += 1
-        if st[i] == text[0]:
-            for j in range(1, lps):
-                n += 1
-                if st[i + j] != text[j]:
-                    break
-                if j == lps - 1:
-                    print(n, ' сравнений')
-                    return i
-    print(n, ' сравнений')
-    return None
+def naive(text, st):
+    mas = []
+    i = 0
+    j = 0
+    compare = 0
+    while i < len(text):
+        compare += 1
+        if text[i] == st[j]:
+            if j == len(st) - 1:
+                mas.append(i + 1 - len(st))
+                i = i - j + 1
+                j = 0
+        elif j != 0:
+            i = i - j + 1
+            j = 0
+        else:
+            if i >= len(text) - len(st) and text[i] != st[0]: #check len text & first smbl
+                return mas, compare
+            i += 1
+    return mas, compare
