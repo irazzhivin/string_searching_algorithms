@@ -17,5 +17,16 @@ class State:
         self.data = key
 
 
-
+class Automata:
+    root, size = None, 0
+    
+    def __init__(self):
+        self.root = None
+        self.size = 0
+    
+    def insert(self, val):
+        if self.root is None:
+            self.root = Node(num)
+        else:
+            self.insert_with_node(self.root, val)
     
