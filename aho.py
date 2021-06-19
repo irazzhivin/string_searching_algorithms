@@ -72,7 +72,7 @@ class Automata:
     def __report_find(self, symbol_pos):
         pattern = self.__states[self.__current_state_index].pattern
         self.__report[pattern].append(symbol_pos - len(pattern) + 1)
-
+    
     def __state_transition(self, symbol, symbol_pos):
         next_index = self.__get_next_index(self.__current_state_index, symbol)
         self.__compares += 1
