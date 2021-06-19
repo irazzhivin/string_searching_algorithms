@@ -72,4 +72,16 @@ class Automata:
     def __report_find(self, symbol_pos):
         pattern = self.__states[self.__current_state_index].pattern
         self.__report[pattern].append(symbol_pos - len(pattern) + 1)
+
+    def __state_transition(self, symbol, symbol_pos):
+        next_index = self.__get_next_index(self.__current_state_index, symbol)
+        self.__compares += 1
+        if next_index != -1:
+            self.__current_state_index = next_index
+            if self.__states[self.__current_state_index].is_end:
+                self.__report_find(symbol_pos)
+        else:
+            if self.__current_state_index != 0:
+                self.__current_state_index = self.__states[self.__current_state_index].fake_link
+                self.__state_transition(symbol, symbol_pos)
     
