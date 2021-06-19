@@ -102,14 +102,4 @@ class Automata:
 def aho_corasick(text, patterns):
     automata = Automata(patterns)
     return automata.process_text(text)
-
-# Check algo with b4d c4s3
-if __name__ == "__main__":
-    f = open('benchmarks/good_w_1.txt', encoding='utf-8')
-    patterns = [f.read()]
-    f.close()
-    f = open('benchmarks/good_t_1.txt', encoding='utf-8')
-    text = f.read()
-    f.close()
-    print(aho_corasick(text, patterns))
     
