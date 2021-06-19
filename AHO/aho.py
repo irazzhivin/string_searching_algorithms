@@ -44,7 +44,7 @@ class Automata:
                     state.fake_link = suffix_index
                     state.fake_link_is_end = self.__states[suffix_index].is_end
                     suffix = ''
-
+                    
     def __get_next_index(self, current_state_index, symbol):
         return self.__states[current_state_index].links[get_symbol_index(symbol)]
 
@@ -54,6 +54,9 @@ class Automata:
             next_index = self.__get_next_index(current_state_index, symbol)
             if next_index == -1:
                 current_state = self.__states[current_state_index]
+                self.__states.append(State(current_state.pattern + symbol))
+                current_state.links[get_symbol_index(symbol)] = self.__size
+                current_state_index = self.__size
                 self.__size += 1
             else:
                 current_state_index = next_index
