@@ -31,9 +31,3 @@ def rabin_karp(st, subst, q=101):
             if t < 0:
                 t = t + q
     return indices, compares
-
-#CHeck 
-if __name__ == '__main__':
-    st = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
-    subst = "aaaaaaaaab"
-    print(rabin_karp(st, subst))
