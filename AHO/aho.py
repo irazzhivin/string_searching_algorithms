@@ -90,4 +90,12 @@ class Automata:
             if self.__current_state_index != 0:
                 self.__current_state_index = self.__states[self.__current_state_index].fake_link
                 self.__state_transition(symbol, symbol_pos)
+    def process_text(self, text):
+        self.__current_state_index = 0
+        self.__compares = 0
+        self.__report = {pattern: [] for pattern in self.__patterns}
+        for symbol_pos in range(len(text)):
+            #print(text[symbol_pos], end='')
+            self.__state_transition(text[symbol_pos], symbol_pos)
+        return self.__report, self.__compares
     
