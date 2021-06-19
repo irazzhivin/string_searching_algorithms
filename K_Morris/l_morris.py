@@ -1,4 +1,4 @@
-def form_pi(ps):
+def form_pi(st):
     output = [0]
     for i in range(1, len(st)):
         j = output[i - 1]
@@ -10,24 +10,30 @@ def form_pi(ps):
     return pi
 
 
-def kmp(s, ps):
-    pi = form_pi(ps)
-    ls = len(s)
-    lps = len(ps)
-    i, j = 0, 0
-    n = 0
-    while i < ls:
-        n += 1
-        if s[i] == ps[j]:
-            i += 1
-            j += 1
-            if j == lps:
-                print(n, ' сравнений')
-                return i - lps
-        else:
-            if j == 0:
-                i += 1
+def knuth_morris_pratt(text, st):
+    compare = 0
+    pref = prefix(st)
+    mas = []
+    i = 0
+    j = 0
+
+    while i < len(text):
+        compare += 1
+        if text[i] == st[j]:
+            if j == len(st) - 1:
+                mas.append(i - len(st) + 1)
+                if pref[j] != 0:
+                    i = i - j
+                j = 0
             else:
-                j = pi[j - 1]
-    print(n, ' сравнений')
-    return None
+                j += 1
+            i += 1
+
+        elif j:
+            j = pref[j - 1]
+        else:
+            # если остаток текста >= длине слова и первый символ не совпадает
+            if i >= len(text) - len(st) and text[i] != st[0]:
+                return mas, compare
+            i += 1
+    return mas, compare
