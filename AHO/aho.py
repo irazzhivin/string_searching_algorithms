@@ -24,15 +24,24 @@ class State:
 
 
 class Automata:
-    root, size = None, 0
-    
-    def __init__(self):
-        self.root = None
-        self.size = 0
-    
-    def insert(self, val):
-        if self.root is None:
-            self.root = Node(num)
-        else:
-            self.insert_with_node(self.root, val)
+    def __init__(self, patterns):
+        self.__root = State()
+        self.__patterns = patterns
+        self.__states = [self.__root]
+        self.__size = 1
+        self.__current_state_index = 0
+        self.__report = None
+        self.__compares = 0
+        for pattern in patterns:
+            self.__insert_pattern(pattern)
+        for state in self.__states:
+            suffix = state.pattern[1:]
+            while suffix != '':
+                suffix_index = self.__get_pattern_index(suffix)
+                if suffix_index == -1:
+                    suffix = suffix[1:]
+                else:
+                    state.fake_link = suffix_index
+                    state.fake_link_is_end = self.__states[suffix_index].is_end
+                    suffix = ''
     
