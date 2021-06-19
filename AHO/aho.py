@@ -5,16 +5,22 @@ ALPHABET_LENGTH = ASCII_TABLE_LENGTH + RUSSIAN_TABLE_LENGTH
 ASCII_LAST_CODE = 127
 RUSSIAN_ALPHABET_FIRST_CODE = 1040
 
+def get_symbol_index(symbol):
+    index = ord(symbol)
+    if index > 127:
+        index -= RUSSIAN_ALPHABET_FIRST_CODE - ASCII_LAST_CODE + 1
+    return index
 
 class State:
-    childs = []
-    parent = None
-    data = str()
-    
-    def __init__(self, key):
-        self.childs = []
-        self.parent = None
-        self.data = key
+    def __init__(self, pattern=''):
+        self.pattern = pattern
+        self.links = [-1 for x in range(ALPHABET_LENGTH)]
+        self.is_end = False
+        self.fake_link = 0
+        self.fake_link_is_end = False
+
+    def __str__(self):
+        return self.pattern
 
 
 class Automata:
