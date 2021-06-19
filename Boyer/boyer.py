@@ -25,6 +25,8 @@ def boyer_moore_horspool(st, subst):
                 off = offsets['*']
             else:
                 off = offsets[st[i]]
+        else:  # symb not same except last
+            off = offsets[subst[j]]
         compares += 1
         if j == -1:  # FIND successfully!!!
             indices.append(i + 1)
