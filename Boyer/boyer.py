@@ -35,5 +35,7 @@ def boyer_moore_horspool(st, subst):
         compares += 1
         if j == -1:  # FIND successfully!!!
             indices.append(i + 1)
+
         k += off
+
     return indices, compares
