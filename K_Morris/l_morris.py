@@ -12,11 +12,10 @@ def form_pi(st):
 
 def knuth_morris_pratt(text, st):
     compare = 0
-    pref = prefix(st)
+    pref = form_pi(st)
     mas = []
     i = 0
     j = 0
-
     while i < len(text):
         compare += 1
         if text[i] == st[j]:
@@ -28,7 +27,6 @@ def knuth_morris_pratt(text, st):
             else:
                 j += 1
             i += 1
-
         elif j:
             j = pref[j - 1]
         else:
