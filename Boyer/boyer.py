@@ -9,6 +9,11 @@ def boyer_moore_horspool(st, subst):
         if subst[i] not in unique:  # condition if symb no add into alphabet
             unique.add(subst[i])
             offsets[subst[i]] = len(subst) - i - 1  # m=6
+    # move last symb
+    if subst[len(subst) - 1] not in unique:
+        offsets[subst[len(subst) - 1]] = len(subst)
+    # move for others
+    offsets['*'] = len(subst)
     # search substr in str
     k = len(subst) - 1
     while k < len(st):
