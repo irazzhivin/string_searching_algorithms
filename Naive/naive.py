@@ -10,6 +10,9 @@ def naive(text, st):
                 mas.append(i + 1 - len(st))
                 i = i - j + 1
                 j = 0
+            else:
+                i += 1
+                j += 1
         elif j != 0:
             i = i - j + 1
             j = 0
