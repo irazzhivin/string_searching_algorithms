@@ -3,7 +3,7 @@ def rabin_karp(st, subst, q=101):
     M = len(subst)
     N = len(st)
     indices = []
-    d = 512
+    d = 256
 
     j = 0
     p = 0  # hash subst
