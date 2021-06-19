@@ -61,4 +61,15 @@ class Automata:
             else:
                 current_state_index = next_index
         self.__states[current_state_index].is_end = True
+    def __get_pattern_index(self, pattern):
+        current_state_index = 0
+        for symbol in pattern:
+            current_state_index = self.__get_next_index(current_state_index, symbol)
+            if current_state_index == -1:
+                return -1
+        return current_state_index
+
+    def __report_find(self, symbol_pos):
+        pattern = self.__states[self.__current_state_index].pattern
+        self.__report[pattern].append(symbol_pos - len(pattern) + 1)
     
