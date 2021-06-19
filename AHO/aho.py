@@ -80,6 +80,12 @@ class Automata:
             self.__current_state_index = next_index
             if self.__states[self.__current_state_index].is_end:
                 self.__report_find(symbol_pos)
+            # chck prefix state
+            saved_current_state = self.__current_state_index
+            while self.__states[self.__current_state_index].fake_link_is_end:
+                self.__current_state_index = self.__states[self.__current_state_index].fake_link
+                self.__report_find(symbol_pos)
+            self.__current_state_index = saved_current_state
         else:
             if self.__current_state_index != 0:
                 self.__current_state_index = self.__states[self.__current_state_index].fake_link
