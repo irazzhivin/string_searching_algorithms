@@ -1,4 +1,4 @@
-def form_pi(st):
+def prefix(st):
     output = [0]
     for i in range(1, len(st)):
         j = output[i - 1]
@@ -7,12 +7,12 @@ def form_pi(st):
         if st[j] == st[i]:
             j = j + 1
         output.append(j)
-    return pi
+    return output
 
 
 def knuth_morris_pratt(text, st):
     compare = 0
-    pref = form_pi(st)
+    pref = prefix(st)
     mas = []
     i = 0
     j = 0
