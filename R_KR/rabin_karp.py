@@ -30,3 +30,9 @@ def rabin_karp(st, subst, q=101):
                 indices.append(i)
 
     return indices, compares
+
+#CHeck 
+if __name__ == '__main__':
+    st = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+    subst = "aaaaaaaaab"
+    print(rabin_karp(st, subst))
