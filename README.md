@@ -8,7 +8,7 @@ String-searching algorithms implementation by Ivan Razzhivin:
 5. Naive Pattern Searching;
 
 # Algo runtime results
-
+```python
 knuth_morris_pratt
 Test N 1 time: 0.0001096788341332508
 Test N 2 time: 0.0001233411376914098
@@ -58,9 +58,11 @@ Test N 5 time: 0.00037424564361572267
 Test N 6 time: 0.0006479978561401367
 Test N 7 time: 0.0032538175582885742
 Test N 8 time: 0.007049036026000976
+```
 
 #Comparison counter
 
+```python
 knuth_morris_pratt
 Test N 1 comparison count: 18 & positions:  [8]
 Test N 2 comparison count: 190 & positions:  [90]
@@ -110,3 +112,4 @@ Test N 5 comparison count: 2053 & positions:  [599]
 Test N 6 comparison count: 3325 & positions:  [610]
 Test N 7 comparison count: 9607 & positions:  [1629]
 Test N 8 comparison count: 32193 & positions:  [9522]
+```
